@@ -1,0 +1,28 @@
+{
+  "name": "backend_mega_project",
+  "version": "1.0.0",
+  "description": "This is a mega project for understanding backend development.",
+  "keywords": [
+    "javascript",
+    "backend"
+  ],
+  "homepage": "https://github.com/prana-W/Backend_Mega_Project#readme",
+  "bugs": {
+    "url": "https://github.com/prana-W/Backend_Mega_Project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prana-W/Backend_Mega_Project.git"
+  },
+  "license": "ISC",
+  "author": "Pranaw Kumar",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3"
+  }
+}
