@@ -13,3 +13,37 @@
 - Do `npm i -D prettier`. Installing it as a dev dependency.
   - Now add a `.prettierrc` file to the root directory and add basic configuration in it.
   - Now add a `.prettierignore` file as well. Add files that we want prettier to ignore
+
+# Lec-8
+
+- Go to Atlas Compass. Make our project and set up our cluster. Then add network access and database access. Then connect the cluster by clicking on Compass. From there copy the URI (string) and paste it in the .env file, there replace the <db-password> with the password of the admin (which we set up in the database).
+- Also include PORT in the .env file
+- CAUTION!!! Remove the last slash in the URI (string) that we copy and pasted in the .env file.
+- Now we add the name of our application in `constants.js`. This is done, so that we don't have to manually change the name evrywhere in future, if we want. 
+  - We could  have also used .env file to do the same, but name of the file is not a sensitive information, that's why keeping it in such a file doesn't make that sense.
+- We also need to do `npm i dotenv mongoose express`as we are working with .env file, mongoose and express
+- dotenv is used, since we want to populate whatever is inside our .env file into our root directory as soon as the project starts.
+  - To do so we can simply do `require('dotenv').config({path: './env'})`
+  - But since we have changed the type in package.json from commonjs to module, we can't use require statement anymore!!
+    - For that we can use add a small line in our dev script in package.json 
+
+## NOTE!!!
+
+As of node verion 20.x.x, we can use .env natively that means, there is no need to install dotenv package. Just simply put `node --env-file=.env abc.js` as a start/dev script. Here --env-file=.env poupulates our .env file content into process.env all around the app. But since we are using nodemon here instead of node, we are still using dotenv. Things might change in the future, so kindly check these things and debug it if getting error. 
+
+### Keep in Mind!!
+
+- Database is in another continent! Therefore, async-await needs to be used.
+- Errors can occur in Database connection, therefore always wrap in try-catch block or use Promises (resolve, reject)
+
+### Connection with Database (using Mongoose)
+
+1. In index.js 
+
+- Here, we use IIFE (async IIFE)
+- Inside add try-catch block for error handling. For the link, use the MONGODB_URI stored in .env file followed by DB_NAME stored in constants.js. Connect both using /
+
+2. In db directory and importing the function in the index.js
+
+
+- `process` is a feature of Node.js
