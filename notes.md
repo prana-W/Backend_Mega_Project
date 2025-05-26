@@ -64,6 +64,31 @@ As of node verion 20.x.x, we can use .env natively that means, there is no need 
 - Middlewares acts in the middle of the client and the server, such as providing checking if the user is logged in etc
 - Now make a `asyncHandler.js` file inside `utils` directory.
   - This is made because we will be handling async function many times in the code, this is a production level practice.
-- Now make a `apiError.js` file in the utils.
+- Now make a `apiError.js` and `apiResponse.js` file in the utils.
   - Here we will be using Error class by Node.js
+  - Every error will be passed through apiError.js file while every response will be passed through apiResponse.js file.
 - Read about HTTP Status code
+
+# Lec-10 (User and Video Model with Hooks and JWT)
+
+- Create `user.model.js` and `video.model.js` file  in models directory. There we create the two models using the data model structure present in README.md file.
+- NOTE: id is created by default in mongoDB
+- We will use `mongoose-aggregate-paginate-v2`
+  - This package allows us to write  aggregation queries.
+  - Read about Aggregation pipeline in mongoDB.
+  - We will use it in video.model.js. We will add this aggregrate framwork as a plugin using middleware
+- Now we use `bcrypt` in user.model.js, it helps us to hash our password 
+- Now we do `npm i jsonwebtoken`, also known as JWT, which makes tokens (Checkout jwt.io for more)
+  - JWT is a bearer token 
+  - NOTE: Payload is a fancy word for data.
+- We will use Pre middleware function, which is triggered just before the data is about to get saved. We use this hook in user.model.js. Read about it in mongoose docs
+  - Now we use pre hook and inject our code for encrypting (only when the password was modified)
+  - But, we also want to check if this
+- Now we make our custom method in userSchema which checks if the password is correct.
+- Put ACCESS_TOKEN_SECRET, ACCESS_TOKEN_EXPIRY, REFRESH_TOKEN_SECRET, REFRESH_TOKEN_EXPIRY in our .env file. 
+  - Expiry here will be 1d and 10d respectively (d means day).
+  - Also token secret can be any string, preferably long for more security and can be generated online.
+  - Refresh token will be stored in the database
+  - - Both Refresh and Access Tokens are JWT tokens.
+  - Now we again make a custom methods for userSchema for generating access and refresh token.
+  
