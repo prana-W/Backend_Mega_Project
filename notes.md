@@ -1,4 +1,4 @@
-# Lec - 7
+# Lec - 7 (Mega-Project Setup)
 
 - We make basic file structures, add public and src directory.
 - Use gitignore generators to generate it for any type of project. Here we have generated for node.
@@ -14,7 +14,7 @@
   - Now add a `.prettierrc` file to the root directory and add basic configuration in it.
   - Now add a `.prettierignore` file as well. Add files that we want prettier to ignore
 
-# Lec-8
+# Lec-8 (Connecting Database)
 
 - Go to Atlas Compass. Make our project and set up our cluster. Then add network access and database access. Then connect the cluster by clicking on Compass. From there copy the URI (string) and paste it in the .env file, there replace the <db-password> with the password of the admin (which we set up in the database).
 - Also include PORT in the .env file
@@ -47,3 +47,23 @@ As of node verion 20.x.x, we can use .env natively that means, there is no need 
 
 
 - `process` is a feature of Node.js
+
+# Lec-9 (Custom API Response and error handling)
+
+- Since connectDB() is returning a promise, we handle the promise by .then() and .catch()
+- Setup app.js with express
+- app.use() is used mostly  when using middleware.
+- Now no `npm i cors cookie-parser`
+- Now import both the packages in `app.js`
+- Now we configure our cors and setup cors origin in our .env file
+- We also do `app.use(express.json({}))`. This is a middleware and allows us to accept json format in our backend. Here we can also set limit to prevent the server from crashing.
+- Now we also configure another middleware for getting data from the url by parsing it.
+- Another configuration is express.static("public")
+- cookieParser allows us to perform CRUD operation on the cookies of the user.
+- In the server we can handle, err, req, res and next (next is used when using middlewares )
+- Middlewares acts in the middle of the client and the server, such as providing checking if the user is logged in etc
+- Now make a `asyncHandler.js` file inside `utils` directory.
+  - This is made because we will be handling async function many times in the code, this is a production level practice.
+- Now make a `apiError.js` file in the utils.
+  - Here we will be using Error class by Node.js
+- Read about HTTP Status code
