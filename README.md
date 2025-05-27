@@ -1,3 +1,7 @@
+# Attention!!
+
+This series is on-hold, due to very high complexity. Refer [this](https://github.com/prana-W/Backend_Series) for current backend series.
+
 # Backend_Mega_Project
 
 This repository contains all the code for the Mega Project done in Chai aur Backend series. 
